@@ -6,7 +6,7 @@
 
 // ===== CONFIG ADAFRUIT IO =====
 #define IO_USERNAME   "MariaClaraOliveira08"
-#define IO_KEY        "aio_PeeB25956VxZ3LDWJnyfAP2EVAXQ"
+#define IO_KEY        "aio_jxhC14UPz7Sa5VjgJx1BjyYzuw8A"
 
 // Cria conexão com Adafruit IO
 AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS);
