@@ -9,7 +9,7 @@
 
 //autenticação adafruit IO
 #define IO_USERNAME "MariaClaraOliveira08"
-#define IO_KEY "aio_VQZI262f4G8A6Meoo7wDSn4NsEgN"
+#define IO_KEY ""
 
 AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS);
 
@@ -32,6 +32,8 @@ float temp_anterior = -1;
 //variavel / ponteiro para referenciar o feed temperatura
 // AdafruitIO_Feed* temperatura = io.feed("temperatura");
 AdafruitIO_Feed* botaoalarme = io.feed("botaoalarme");
+AdafruitIO_Feed* distanciaultrassom = io.feed("distanciaultrassom");
+
 
 
 #define pinNTC 34
@@ -104,6 +106,11 @@ void loop() {
   Serial.println(distancia);
   Serial.println(" cm");
 
+  if(distancia != 0) {
+    // só envia distancias válidas
+    distanciaultrassom -> save(distancia);
+  }
+  
   //ativação ou desativação do alarme
   if(alarmeAtivo && distancia > 0 && distancia < LIMITE_DISTANCIA){
     ativarAlerta();
@@ -111,4 +118,5 @@ void loop() {
   else{
     desligarAlerta();
   }
+  delay(3000);  //intervalo ideal do adafruit
 }
